@@ -1,9 +1,19 @@
 {
-  "name": "mongoose-api-query",
-  "version": "0.1.1pre",
+  "name": "@valiton/mongoose-api-query",
+  "version": "0.1.2",
+  "main": "index.js",
   "author": "Adam Jacob Becker <ad@mbecker.cc>",
+  "files": [
+    "index.js",
+    "lib/mongoose-api-query.js"
+  ],
   "description": "Given a Mongoose model and an array of URI params, construct a query for use in a search API.",
-  "keywords": ["API", "mongoose", "search", "parameters"],
+  "keywords": [
+    "API",
+    "mongoose",
+    "search",
+    "parameters"
+  ],
   "scripts": {
     "pretest": "node load_fixtures.js; node app.js",
     "test": "mocha"
@@ -17,5 +27,5 @@
   "dependencies": {
     "mongoose": "~3.0.2"
   },
-  "homepage": "http://github.com/adamjacobbecker/mongoose-api-query"
+  "homepage": "http://github.com/valiton/mongoose-api-query"
 }
