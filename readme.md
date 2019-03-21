@@ -113,6 +113,7 @@ This is a list of the optional search operators you can use for each SchemaType.
 - `number={lte}123` - <=123
 - `number={ne}123` - Not 123
 - `number={mod}10,2` - Where (number / 10) has remainder 2
+- `number={exists}false` - Check if parameter exists
 
 #### String
 
@@ -121,6 +122,7 @@ This is a list of the optional search operators you can use for each SchemaType.
 - `string={in}match,batch` - Either match or batch
 - `string={not}coffee` - Not coffee
 - `string={exact}CoFeEe` - Case-sensitive exact match of "CoFeEe"
+- `string={exists}false` - Check if parameter exists
 
 #### Latlon
 

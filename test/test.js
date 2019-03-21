@@ -197,11 +197,35 @@ describe('mongoose-api-query', function(){
       });
     });
 
+    it('returns only monsters with title', function(done){
+      browser.visit("http://localhost:3000/test1?title={exists}true", function (){
+        hasMonster("Big Purple People Eater");
+        hasMonster("Bessie the Lochness Monster");
+        hasMonsterCount(2);
+        done();
+      });
+    });
+
+    it('returns only monsters without title', function(done){
+      browser.visit("http://localhost:3000/test1?title={exists}false", function (){
+        hasMonsterCount(5); // two monsters have a title
+        done();
+      });
+    });
+
     it('does partial matching by default', function(done){
       browser.visit("http://localhost:3000/test1?name=biggie%20smalls", function (){
         hasMonster("Biggie Smalls");
         hasMonster("Biggie Smalls the 2nd");
         hasMonsterCount(2);
+        done();
+      });
+    });
+
+    it('returns correct result with {exact}', function(done){
+      browser.visit("http://localhost:3000/test1?name={exact}Big%20Purple%20People%20Eater", function (){
+        hasMonster("Big Purple People Eater");
+        hasMonsterCount(1);
         done();
       });
     });
@@ -315,6 +339,38 @@ describe('mongoose-api-query', function(){
     it('returns correct results for {all}', function(done){
       browser.visit("http://localhost:3000/test1?monster_identification_no={all}1,301", function (){
         hasMonsterCount(0);
+        done();
+      });
+    });
+
+    it('returns only monsters with tax_identification_no', function(done){
+      browser.visit("http://localhost:3000/test1?tax_identification_no={exists}true", function (){
+        hasMonster("Biggie Smalls the 2nd");
+        hasMonsterCount(1);
+        done();
+      });
+    });
+
+    it('returns only monsters without tax_identification_no', function(done){
+      browser.visit("http://localhost:3000/test1?tax_identification_no={exists}false", function (){
+        hasMonsterCount(6);
+        done();
+      });
+    });
+  });
+
+  describe('SchemaDate', function(){
+    it('returns only monsters with vegan_since', function(done){
+      browser.visit("http://localhost:3000/test1?vegan_since={exists}true", function (){
+        hasMonster("Biggie Smalls the 2nd");
+        hasMonsterCount(1);
+        done();
+      });
+    });
+
+    it('returns only monsters without vegan_since', function(done){
+      browser.visit("http://localhost:3000/test1?vegan_since={exists}false", function (){
+        hasMonsterCount(6);
         done();
       });
     });
