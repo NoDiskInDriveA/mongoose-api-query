@@ -94,6 +94,13 @@ geo near, with (optional) radius in miles:
 /monsters?sort_by=name,desc
 ```
 
+##### Selecting only specific fields
+
+```
+/monsters?selected_fields=name          // select only _id and name field
+/monsters?selected_fields=name,title    // select only _id, name and title field
+```
+
 ##### Schemaless search
 
 Do you have a property defined in your schema like `data: {}`, that can have anything inside it? You can search that, too, and it will be treated as a string.
