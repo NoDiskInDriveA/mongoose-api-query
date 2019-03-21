@@ -1,21 +1,26 @@
 {
   "name": "mongoose-api-query",
-  "version": "0.1.1pre",
+  "version": "0.2.0",
   "author": "Adam Jacob Becker <ad@mbecker.cc>",
   "description": "Given a Mongoose model and an array of URI params, construct a query for use in a search API.",
-  "keywords": ["API", "mongoose", "search", "parameters"],
+  "keywords": [
+    "API",
+    "mongoose",
+    "search",
+    "parameters"
+  ],
   "scripts": {
     "pretest": "node load_fixtures.js; node app.js",
     "test": "mocha"
   },
   "devDependencies": {
-    "express": "3.0.0rc3",
+    "express": "4.16.4",
     "mocha": "*",
     "zombie": "*",
     "expect.js": "*"
   },
   "dependencies": {
-    "mongoose": "~3.0.2"
+    "mongoose": "5.4.19"
   },
   "homepage": "http://github.com/adamjacobbecker/mongoose-api-query"
 }

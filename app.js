@@ -9,23 +9,12 @@ var express = require('express')
   , path = require('path')
   , mongoose = require('mongoose');
 
-global.DB = mongoose.createConnection('localhost', 'mongoose-api-query');
+mongoose.connect('mongodb://localhost:27017/mongoose-api-query', {useNewUrlParser: true});
 
 var app = express();
 
-app.configure(function(){
-  app.set('port', process.env.PORT || 3000);
-  app.use(express.favicon());
-  app.use(express.logger('dev'));
-  app.use(express.bodyParser());
-  app.use(express.methodOverride());
-  app.use(app.router);
-  app.use(express.static(path.join(__dirname, 'public')));
-});
-
-app.configure('development', function(){
-  app.use(express.errorHandler());
-});
+app.set('port', process.env.PORT || 3000);
+app.use(express.static(path.join(__dirname, 'public')));
 
 routes.init(app);
 

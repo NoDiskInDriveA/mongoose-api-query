@@ -1,8 +1,10 @@
 var fs = require('fs')
 var mongoose = require('mongoose');
-global.DB = mongoose.createConnection('localhost', 'mongoose-api-query');
+mongoose.connect('mongodb://localhost:27017/mongoose-api-query', {useNewUrlParser: true});
 var Monster = require('./model');
 var monsters = require('./fixtures');
+
+console.log(monsters)
 
 Monster.collection.remove({});
 

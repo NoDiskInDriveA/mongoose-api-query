@@ -2,6 +2,7 @@ module.exports = [
 
 {
   name: "Big Purple People Eater",
+  title: 'Boom the one',
   monster_identification_no: 1,
   monster_object_id: "530088897c979cdb49475d9a",
   eats_humans: true,
@@ -16,6 +17,7 @@ module.exports = [
 
 {
   name: "Bessie the Lochness Monster",
+  title: 'Mess things up',
   monster_identification_no: 200,
   monster_object_id: "530088897c979cdb49475d9b",
   eats_humans: true,
@@ -43,6 +45,7 @@ module.exports = [
   monster_identification_no: 301,
   monster_object_id: "530088897c979cdb49475d9d",
   eats_humans: false,
+  vegetarian: true,
   foods: [{name: "Kale", vegetarian: true, calories: 20}],
   loc: [38.9,-77]
 },
@@ -52,6 +55,7 @@ module.exports = [
   monster_identification_no: 100439,
   monster_object_id: "530088897c979cdb49475d9e",
   eats_humans: false,
+  vegetarian: true,
   foods: [{name: "Arms", vegetarian: false, calories: 300}],
   loc: [38.87,-77.04]
 },
@@ -59,15 +63,18 @@ module.exports = [
 {
   name: "Biggie Smalls the 2nd",
   monster_identification_no: 9420432,
+  tax_identification_no: 9420432,
   monster_object_id: "530088897c979cdb49475d9f",
   eats_humans: false,
   foods: [{name: "Legs", vegetarian: false, calories: 400}],
+  vegetarian: false,
+  vegan_since: new Date(),
   loc: [38.86,-77.05]
 },
 
 {
   name: "AZ124584545",
-  monster_object_id: "530088897c979cdb49475d9g"
+  monster_object_id: "530088897c979cdb49475d8a"
 }
 
 ];
