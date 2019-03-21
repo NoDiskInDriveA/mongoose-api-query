@@ -4,8 +4,6 @@ mongoose.connect('mongodb://localhost:27017/mongoose-api-query', {useNewUrlParse
 var Monster = require('./model');
 var monsters = require('./fixtures');
 
-console.log(monsters)
-
 Monster.collection.remove({});
 
 var addMonsters = function (monsters) {
