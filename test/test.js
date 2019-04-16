@@ -20,6 +20,21 @@ var hasMonstersInOrder = function (monster1, monster2) {
   expect(index1).to.be.lessThan(index2);
 };
 
+var hasMonstersProperties = function(properties) {
+  var json = JSON.parse(browser.text());
+
+  var jsonProperties = json.reduce(function createDistinctPropertyMap(propMap, monster) {
+    for (var prop in monster) {
+      if (prop == '__v') continue;
+
+      propMap[prop] = 1;
+    }
+    return propMap;
+  }, {})
+
+  expect(Object.keys(jsonProperties).sort().join(',')).to.be.equal(properties.sort().join(','));
+};
+
 describe('mongoose-api-query', function(){
 
   it('without any query params, loads all monsters', function(done){
@@ -67,6 +82,33 @@ describe('mongoose-api-query', function(){
   it('"desc" is valid sort order', function(done){
     browser.visit("http://localhost:3000/test1?sort_by=monster_identification_no,desc", function () {
       hasMonstersInOrder("Bessie the Lochness Monster", "Big Purple People Eater");
+      done();
+    });
+  });
+
+  it('select all attributes if select field is not set', function(done) {
+    browser.visit("http://localhost:3000/test1", function () {
+      hasMonstersProperties([
+        '_id',
+        'name',
+        'title',
+        'tax_identification_no',
+        'monster_identification_no',
+        'monster_object_id',
+        'eats_humans',
+        'foods',
+        'vegetarian',
+        'vegan_since',
+        'loc',
+        'data'
+      ]);
+      done();
+    });
+  });
+
+  it('can select for only specific attributes', function(done) {
+    browser.visit("http://localhost:3000/test1?selected_fields=monster_identification_no,name", function () {
+      hasMonstersProperties(["_id", "monster_identification_no", "name"]);
       done();
     });
   });
